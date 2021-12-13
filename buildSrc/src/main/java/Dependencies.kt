@@ -21,6 +21,7 @@ object Versions {
     const val espresso_core = "3.4.0"
     const val constraint_layout = "2.1.2"
     const val android_startup = "1.0.7"
+    const val tracing = "1.0.0"
 
     const val gradle_bintray_plugin = "1.8.0"
     const val android_maven_gradle_plugin = "2.1"
@@ -33,6 +34,7 @@ object Dependencies {
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val junit = "junit:junit:${Versions.junit}"
+    const val tracing = "androidx.tracing:tracing:${Versions.tracing}"
     const val ext_junit = "androidx.test.ext:junit:${Versions.ext_junit}"
     const val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso_core}"
     const val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"

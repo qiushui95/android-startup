@@ -2,7 +2,7 @@ package com.rousetime.android_startup.run
 
 import android.content.Context
 import android.os.Process
-import androidx.core.os.TraceCompat
+import androidx.tracing.Trace
 import com.rousetime.android_startup.Startup
 import com.rousetime.android_startup.annotation.ThreadPriority
 import com.rousetime.android_startup.dispatcher.ManagerDispatcher
@@ -28,11 +28,11 @@ internal class StartupRunnable(
         startup.toWait()
         StartupLogUtils.d("${startup::class.java.simpleName} being create.")
 
-        TraceCompat.beginSection(startup::class.java.simpleName)
+        Trace.beginSection(startup::class.java.simpleName)
         StartupCostTimesUtils.recordStart(startup, startup.callCreateOnMainThread(), startup.waitOnMainThread())
         val result = startup.create(context)
         StartupCostTimesUtils.recordEnd(startup)
-        TraceCompat.endSection()
+        Trace.endSection()
 
         // To save result of initialized component.
         StartupCacheManager.instance.saveInitializedComponent(startup::class.java, ResultModel(result))

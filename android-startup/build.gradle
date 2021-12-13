@@ -28,6 +28,7 @@ dependencies {
     implementation Dependencies.kotlin_stdlib
     implementation Dependencies.core_ktx
     implementation Dependencies.appcompat
+    implementation Dependencies.tracing
 
     testImplementation Dependencies.junit
     androidTestImplementation Dependencies.ext_junit

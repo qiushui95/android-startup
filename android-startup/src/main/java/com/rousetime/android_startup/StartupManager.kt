@@ -2,7 +2,7 @@ package com.rousetime.android_startup
 
 import android.content.Context
 import android.os.Looper
-import androidx.core.os.TraceCompat
+import androidx.tracing.Trace
 import com.rousetime.android_startup.annotation.MultipleProcess
 import com.rousetime.android_startup.dispatcher.StartupManagerDispatcher
 import com.rousetime.android_startup.execption.StartupException
@@ -56,7 +56,7 @@ class StartupManager private constructor(
             return@apply
         }
 
-        TraceCompat.beginSection(StartupManager::class.java.simpleName)
+        Trace.beginSection(StartupManager::class.java.simpleName)
         StartupCostTimesUtils.startTime = System.nanoTime()
 
         TopologySort.sort(startupList).run {
@@ -66,7 +66,7 @@ class StartupManager private constructor(
 
         if (needAwaitCount.get() <= 0) {
             StartupCostTimesUtils.endTime = System.nanoTime()
-            TraceCompat.endSection()
+            Trace.endSection()
         }
     }
 
@@ -99,7 +99,7 @@ class StartupManager private constructor(
 
         if (count > 0) {
             StartupCostTimesUtils.endTime = System.nanoTime()
-            TraceCompat.endSection()
+            Trace.endSection()
         }
     }
 

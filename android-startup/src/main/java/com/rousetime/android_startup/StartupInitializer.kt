@@ -3,7 +3,7 @@ package com.rousetime.android_startup
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.core.os.TraceCompat
+import androidx.tracing.Trace
 import com.rousetime.android_startup.execption.StartupException
 import com.rousetime.android_startup.manager.StartupCacheManager
 import com.rousetime.android_startup.model.StartupProviderStore
@@ -22,13 +22,13 @@ internal class StartupInitializer {
 
     internal fun discover(context: Context, providerName: String): StartupProviderStore {
 
-        TraceCompat.beginSection(StartupInitializer::class.java.simpleName)
+        Trace.beginSection(StartupInitializer::class.java.simpleName)
 
         val result = mutableListOf<AndroidStartup<*>>()
 
         val config = doDiscover(context, providerName, result)
 
-        TraceCompat.endSection()
+        Trace.endSection()
 
         return StartupProviderStore(result, config)
     }
